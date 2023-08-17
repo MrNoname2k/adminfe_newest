@@ -3,7 +3,7 @@
   <div class="post-title d-flex align-items-center">
     <!-- profile picture end -->
     <div class="profile-thumb">
-      <a (click)="navigateService.navigateToPage('/profile', userId)">
+      <a (click)="navigateService.navigateToPage('/profile', post.idUserCreate.id)">
         <ng-container *ngFor="let ava of post.idUserCreate.avatars">
           <ng-container *ngFor="let url of ava | postImagePipe | async">
             <figure class="profile-thumb-middle">
@@ -16,12 +16,14 @@
     <!-- profile picture end -->
 
     <div class="posted-author">
-      <h6 class="author"><a href="profile.html">{{post.idUserCreate.lastName + ' ' + post.idUserCreate.firstName}}</a></h6>
+      <h6 class="author"><a
+          (click)="navigateService.navigateToPage('/profile', post.idUserCreate.id)">{{post.idUserCreate.lastName + ' '
+          + post.idUserCreate.firstName}}</a></h6>
       <span class="post-time">{{utils.convertTimeToNotify(utils.getTimestamp(post.createDate + ''!))}}</span>
 
     </div>
 
-    <div class="post-settings-bar">
+    <!-- <div class="post-settings-bar">
       <span></span>
       <span></span>
       <span></span>
@@ -32,7 +34,7 @@
           <li><button>embed ago</button></li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- post title start -->
   <div class="post-content">
