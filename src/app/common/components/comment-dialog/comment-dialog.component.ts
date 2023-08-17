@@ -9,6 +9,7 @@ import { Comment, Post } from 'src/app/pages/models/home-response';
 import { CommentService } from 'src/app/pages/services/comment.service';
 import { Utils } from '../../utils/utils';
 import { DialogInfoComponent } from '../dialog-info/dialog-info.component';
+import { NavigatePageService } from 'src/app/core/service/navigate-page/navigate-page.service';
 
 @Component({
   selector: 'app-comment-dialog',
@@ -42,8 +43,9 @@ export class CommentDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: Post,
     private commentService: CommentService,
     private router: ActivatedRoute,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+    public navigateService: NavigatePageService
+  ) { }
 
   public ngOnInit(): void {
     if (this.data) {

@@ -1,4 +1,4 @@
-<div class="profile-banner-large" >
+<div class="profile-banner-large">
   <ng-container *ngFor="let urlImg of bannerPost | postImagePipe | async">
     <img [src]="urlImg" alt="">
   </ng-container>
@@ -9,9 +9,9 @@
       <div class="col-lg-3 col-md-3">
         <div class="profile-picture-box">
           <figure class="profile-picture">
-              <ng-container *ngFor="let urlImg of avatarPost | postImagePipe | async">
-                <img [src]="urlImg" alt="">
-              </ng-container>
+            <ng-container *ngFor="let urlImg of avatarPost | postImagePipe | async">
+              <img [src]="urlImg" alt="">
+            </ng-container>
           </figure>
         </div>
       </div>
@@ -22,9 +22,9 @@
               <ul class="main-menu">
                 <li><a (click)="timeLine()">timeline</a></li>
                 <li><a (click)="about()">about</a></li>
-                <li><a href="photos.html">photos</a></li>
-                <li><a href="friends.html">friends</a></li>
-                <li><a href="about.html">more</a></li>
+                <li><a href="#">photos</a></li>
+                <li><a href="#">friends</a></li>
+                <li><a href="#">more</a></li>
                 <!-- <li class="d-inline-block d-md-none"><a href="profile.html">edit profile</a></li> -->
               </ul>
             </nav>

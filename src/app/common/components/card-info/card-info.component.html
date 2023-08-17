@@ -19,7 +19,9 @@
       </button>
     </figure>
     <div class="profile-desc text-center">
-      <h6 class="author"><a href="profile.html">{{userInfoData['firstName'] + ' ' + userInfoData['lastName']}}</a></h6>
+      <h6 class="author"><a
+          (click)="navigatePageService.navigateToPage('/profile', userInfoData['id'])">{{userInfoData['firstName'] + ' '
+          + userInfoData['lastName']}}</a></h6>
       <p>{{userInfoData.description}}</p>
     </div>
   </div>

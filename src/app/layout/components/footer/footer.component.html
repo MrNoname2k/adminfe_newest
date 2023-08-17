@@ -1,4 +1,3 @@
-
 <footer class="d-none d-lg-block">
   <div class="footer-area reveal-footer">
     <div class="container-fluid">
@@ -8,47 +7,49 @@
             <div class="footer-card position-relative">
               <div class="friends-search">
                 <form class="search-box">
-                  <input (mousedown)="isShowSearchFriend = true" type="text" placeholder="Search Your Friends" class="search-field" #keyword (change)="searchFriend(keyword.value)">
+                  <input (mousedown)="isShowSearchFriend = true" type="text" placeholder="Search Your Friends"
+                    class="search-field" #keyword (change)="searchFriend(keyword.value)">
                   <button class="search-btn"><i class="flaticon-search"></i></button>
                 </form>
               </div>
               <div class="friend-search-list" [ngClass]="isShowSearchFriend ? 'show' : ''">
                 <div class="frnd-search-title">
-                    <button class="frnd-search-icon"><i class="flaticon-settings"></i></button>
-                    <p>search friends</p>
-                    <button class="close-btn" (click)="isShowSearchFriend = false"><i class="flaticon-cross-out"></i></button>
+                  <button class="frnd-search-icon"><i class="flaticon-settings"></i></button>
+                  <p>search friends</p>
+                  <button class="close-btn" (click)="isShowSearchFriend = false"><i
+                      class="flaticon-cross-out"></i></button>
                 </div>
                 <div class="frnd-search-inner custom-scroll">
-                    <ul>
-                      <ng-container *ngFor="let item of friends">
-                        <li class="d-flex align-items-center profile-active">
-                          <!-- profile picture end -->
-                          <div class="profile-thumb active" (click)="showChart(item.id!)">
-                            <a (click)="showChart(item.id!)">
-                              <figure class="profile-thumb-small" *ngIf="item.avatars?.length">
-                                <ng-container *ngFor="let avatar of item.avatars">
-                                  <ng-container *ngFor="let urlImg of avatar | postImagePipe | async">
-                                    <img [src]="urlImg ? urlImg : 'assets/images/icons/plane.png'" alt="">
-                                  </ng-container>
+                  <ul>
+                    <ng-container *ngFor="let item of friends">
+                      <li class="d-flex align-items-center profile-active">
+                        <!-- profile picture end -->
+                        <div class="profile-thumb active" (click)="showChart(item.id!)">
+                          <a (click)="showChart(item.id!)">
+                            <figure class="profile-thumb-small" *ngIf="item.avatars?.length">
+                              <ng-container *ngFor="let avatar of item.avatars">
+                                <ng-container *ngFor="let urlImg of avatar | postImagePipe | async">
+                                  <img [src]="urlImg ? urlImg : 'assets/images/icons/plane.png'" alt="">
                                 </ng-container>
-                              </figure>
+                              </ng-container>
+                            </figure>
 
-                              <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                                    <img src="assets/images/profile/profile-small-15.jpg" alt="">
-                              </figure>
-                            </a>
+                            <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
+                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                            </figure>
+                          </a>
                         </div>
-                          <!-- profile picture end -->
+                        <!-- profile picture end -->
 
-                          <div class="posted-author">
-                            <h6 class="author">{{item.firstName + ' ' + item.lastName}}</h6>
-                            <p>{{item.online == true ? 'Online' : 'Offline'}}</p>
+                        <div class="posted-author">
+                          <h6 class="author">{{item.firstName + ' ' + item.lastName}}</h6>
+                          <p>{{item.online == true ? 'Online' : 'Offline'}}</p>
                         </div>
                       </li>
-                      </ng-container>
-                    </ul>
+                    </ng-container>
+                  </ul>
                 </div>
-            </div>
+              </div>
             </div>
             <div class="card card-small mb-0 active-profile-wrapper">
               <div class="active-profiles-wrapper">
@@ -67,7 +68,7 @@
                             </figure>
 
                             <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                                  <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
                             </figure>
                           </a>
                         </div>
@@ -80,8 +81,10 @@
             <div class="footer-card position-relative">
               <div class="live-chat-inner">
                 <div class="chat-text-field">
-                  <textarea [disabled]="!isShowChat" class="live-chat-field custom-scroll" placeholder="Text Message" [(ngModel)] = "messageContent"></textarea>
-                  <button [disabled]="!isShowChat" class="chat-message-send" type="submit" value="submit" (click)="send()">
+                  <textarea [disabled]="!isShowChat" class="live-chat-field custom-scroll" placeholder="Text Message"
+                    [(ngModel)]="messageContent"></textarea>
+                  <button [disabled]="!isShowChat" class="chat-message-send" type="submit" value="submit"
+                    (click)="send()">
                     <img src="assets/images/icons/plane.png" alt="">
                   </button>
                 </div>
@@ -98,7 +101,8 @@
                     </div>
 
                     <div class="posted-author">
-                      <h6 class="author"><a >{{messagesViewAll?.toUserFirstName + ' ' + messagesViewAll?.toUserLastName}}</a></h6>
+                      <h6 class="author"><a>{{messagesViewAll?.toUserFirstName + ' ' +
+                          messagesViewAll?.toUserLastName}}</a></h6>
                       <span class="active-pro">{{messagesViewAll?.login ? 'Active Now' : 'offline'}}</span>
                     </div>
                     <div class="live-chat-settings ml-auto">
@@ -107,15 +111,17 @@
                     </div>
                   </div>
                   <div class="message-list-inner">
-                    <ul #appScrollBottom class = "message-list">
+                    <ul #appScrollBottom class="message-list">
                       <ng-container *ngFor="let message of messagesViewAll?.messages">
                         <li class="text-friends" *ngIf="message.fromUserId !== loggedInUserId">
                           <p>{{message.content}}</p>
-                          <div class="message-time">{{utils.convertTimeToNotify(utils.getTimestamp(message.createDate))}}</div>
+                          <div class="message-time">
+                            {{utils.convertTimeToNotify(utils.getTimestamp(message.createDate))}}</div>
                         </li>
                         <li class="text-author" *ngIf="message.fromUserId === loggedInUserId">
                           <p>{{message.content}}</p>
-                          <div class="message-time">{{utils.convertTimeToNotify(utils.getTimestamp(message.createDate))}}</div>
+                          <div class="message-time">
+                            {{utils.convertTimeToNotify(utils.getTimestamp(message.createDate))}}</div>
                         </li>
                       </ng-container>
                     </ul>
@@ -162,7 +168,7 @@
                             </figure>
 
                             <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                                  <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
                             </figure>
                           </a>
                         </div>

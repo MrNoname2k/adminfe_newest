@@ -29,7 +29,7 @@ export class AboutComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private activeRoute: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadMyAbout();

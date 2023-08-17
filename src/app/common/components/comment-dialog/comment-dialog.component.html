@@ -8,18 +8,31 @@
   <div class="dialog-content">
     <div class="content-top">
       <div class="content-top-left">
-        <div _ngcontent-kni-c115="" class="profile-thumb">
+        <!-- <div _ngcontent-kni-c115="" class="profile-thumb">
           <a _ngcontent-kni-c115="" href="#">
             <figure _ngcontent-kni-c115="" class="profile-thumb-middle">
               <img _ngcontent-kni-c115="" src="assets/images/profile/profile-small-1.jpg" alt="profile picture">
             </figure>
           </a>
+        </div> -->
+        <div class="profile-thumb">
+          <a (click)="navigateService.navigateToPage('/profile', post.idUserCreate.id)">
+            <ng-container *ngFor="let ava of post.idUserCreate.avatars">
+              <ng-container *ngFor="let url of ava | postImagePipe | async">
+                <figure class="profile-thumb-middle">
+                  <img [src]="url" alt="profile picture">
+                </figure>
+              </ng-container>
+            </ng-container>
+          </a>
         </div>
+        <!--  -->
         <div _ngcontent-etd-c115="" class="posted-author">
           <h6 _ngcontent-etd-c115="" class="author"><a _ngcontent-etd-c115=""
-              href="profile.html">{{post.idUserCreate.lastName + post.idUserCreate.firstName}}</a></h6>
-          <span _ngcontent-etd-c115=""
-            class="post-time">{{utils.convertTimeToNotify(utils.getTimestamp(post.createDate + ''))}}</span>
+              (click)="navigateService.navigateToPage('/profile', post.idUserCreate.id)">{{post.idUserCreate.lastName +
+              post.idUserCreate.firstName}}</a></h6>
+          <span _ngcontent-etd-c115="" class="post-time">{{utils.convertTimeToNotify(utils.getTimestamp(post.createDate
+            + ''))}}</span>
         </div>
       </div>
       <div class="content-top-edit">
@@ -76,7 +89,8 @@
               <mat-icon>menu</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before" class="option-menu">
-              <button mat-menu-item (click)="editIndex = i; isShow = -1; showReplyIndex = -1; editReplyIndex = -1; editText = comment.mainComment.content">Edit</button>
+              <button mat-menu-item
+                (click)="editIndex = i; isShow = -1; showReplyIndex = -1; editReplyIndex = -1; editText = comment.mainComment.content">Edit</button>
               <button mat-menu-item (click)="deleteComment(comment.mainComment.id)">Delete</button>
             </mat-menu>
           </div>
@@ -98,7 +112,8 @@
             </div>
           </ng-template>
           <div class="comment-actions">
-            <span class="comment-reply" (click)="isShow = i; showReplyIndex = -1; editReplyIndex = -1; editIndex = -1">Reply</span>
+            <span class="comment-reply"
+              (click)="isShow = i; showReplyIndex = -1; editReplyIndex = -1; editIndex = -1">Reply</span>
           </div>
           <div class="reply-area" [ngClass]="{'show': isShow === i, 'hide' : isShow !== i}">
             <mat-form-field>
@@ -115,7 +130,8 @@
                   <mat-icon>menu</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu" xPosition="before" class="option-menu">
-                  <button mat-menu-item (click)="editReplyIndex = j; isShow = -1; showReplyIndex = -1; editIndex = -1; editReplyText = reply.content">Edit</button>
+                  <button mat-menu-item
+                    (click)="editReplyIndex = j; isShow = -1; showReplyIndex = -1; editIndex = -1; editReplyText = reply.content">Edit</button>
                   <button mat-menu-item (click)="deleteReplyComment(reply.id)">Delete</button>
                 </mat-menu>
               </div>
@@ -141,7 +157,8 @@
                 </ng-template>
 
                 <div class="comment-actions">
-                  <span class="comment-reply" (click)="showReplyIndex = j; isShow = -1; editIndex = -1; editReplyIndex = -1">Reply</span>
+                  <span class="comment-reply"
+                    (click)="showReplyIndex = j; isShow = -1; editIndex = -1; editReplyIndex = -1">Reply</span>
                 </div>
                 <div class="reply-area" [ngClass]="{'show': showReplyIndex === j, 'hide' : showReplyIndex !== j}">
                   <mat-form-field>
@@ -159,8 +176,7 @@
         </span>
       </div>
 
-      <button class="loadmore-btn" (click)="loadmore('comment')"
-        *ngIf="commentTransport.length > numberOfComments">
+      <button class="loadmore-btn" (click)="loadmore('comment')" *ngIf="commentTransport.length > numberOfComments">
         {{ commentTransport.length - numberOfComments + ' comments'}}
       </button>
     </div>
