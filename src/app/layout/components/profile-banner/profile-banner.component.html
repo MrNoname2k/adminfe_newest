@@ -9,6 +9,9 @@
       <div class="col-lg-3 col-md-3">
         <div class="profile-picture-box">
           <figure class="profile-picture">
+            <ng-container *ngIf="!avatarPost">
+              <img src="../../../../assets/images/profile/profile-sr-1.jpg" alt="">
+            </ng-container>
             <ng-container *ngFor="let urlImg of avatarPost | postImagePipe | async">
               <img [src]="urlImg" alt="">
             </ng-container>

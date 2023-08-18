@@ -4,6 +4,7 @@ import { AsideBarData } from 'src/app/pages/models/home-response';
 import { Utils } from '../../utils/utils';
 import { ActivatedRoute } from '@angular/router';
 import { RelationshipService } from 'src/app/pages/services/relationship.service';
+import { NavigatePageService } from 'src/app/core/service/navigate-page/navigate-page.service';
 
 @Component({
   selector: 'app-board',
@@ -19,7 +20,7 @@ export class BoardComponent implements OnChanges, OnInit {
   public utils = Utils;
   public userId: string = '';
 
-  public constructor(private route: ActivatedRoute, private relationshipService: RelationshipService) {
+  public constructor(private route: ActivatedRoute, private relationshipService: RelationshipService, public navigateService: NavigatePageService) {
 
   }
 
@@ -43,8 +44,8 @@ export class BoardComponent implements OnChanges, OnInit {
   }
 
   addFriend(id?: string) {
-    if(id) {
-      this.relationshipService.addFriend({idUserEntityTow: id}).subscribe({
+    if (id) {
+      this.relationshipService.addFriend({ idUserEntityTow: id }).subscribe({
         next: (res) => {
           console.log(res);
 
