@@ -133,8 +133,7 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         if (res.meta.code === '200') {
           this.homeData = res;
-          console.log(res);
-
+          console.log("🚀 ~ file: home.component.ts:136 ~ HomeComponent ~ this.homeService.getDataForHomePage ~ res:", res);
 
           if (this.homeData) {
             this.postPageData = this.homeData.data.postEntityPage;

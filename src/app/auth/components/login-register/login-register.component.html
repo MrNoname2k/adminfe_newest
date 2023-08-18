@@ -6,7 +6,7 @@
           <div class="col-lg-6">
             <div class="timeline-logo-area d-flex align-items-center">
               <div class="timeline-logo">
-                <a href="index.html">
+                <a href="#">
                   <img src="assets/images/logo/logo.png" alt="timeline logo">
                 </a>
               </div>
@@ -120,6 +120,7 @@
                           <mat-option value="Noakhali">Noakhali</mat-option>
                           <mat-option value="Australia">Australia</mat-option>
                           <mat-option value="China">China</mat-option>
+                          <mat-option value="VietNam">VietNam</mat-option>
                         </mat-select>
                         <mat-error
                           *ngIf="registerForm.controls['address'].touched && registerForm.controls['address'].invalid">{{utils.getMessError(registerForm.controls['address'].errors)}}</mat-error>
@@ -129,7 +130,7 @@
                       <button (click)="submitRegisterForm()" class="submit-btn">Create Account</button>
                     </div>
                   </div>
-                  <h6 class="terms-condition">I have read & accepted the <a href="#">terms of use</a></h6>
+                  <!-- <h6 class="terms-condition">I have read & accepted the <a href="#">terms of use</a></h6> -->
                 </form>
               </div>
             </div>
