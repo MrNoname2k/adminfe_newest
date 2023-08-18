@@ -7,13 +7,13 @@
         <ng-container *ngFor="let ava of post.idUserCreate.avatars">
           <ng-container *ngFor="let url of ava | postImagePipe | async">
             <figure class="profile-thumb-middle">
-              <img [src]="url" alt="profile picture">
+              <img [src]="url ? url : '../../../../assets/images/profile/profile-small-10.jpg'" alt="profile picture">
             </figure>
           </ng-container>
         </ng-container>
       </a>
     </div>
-    <!-- profile picture end -->
+    <!-- profile picture end  -->
 
     <div class="posted-author">
       <h6 class="author"><a
@@ -66,12 +66,12 @@
             <span>{{post.comments.length}}</span>
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button class="post-share">
             <i class="bi bi-share"></i>
             <span>07</span>
           </button>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
