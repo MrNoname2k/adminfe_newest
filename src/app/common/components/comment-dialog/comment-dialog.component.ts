@@ -50,7 +50,9 @@ export class CommentDialogComponent implements OnInit {
   public ngOnInit(): void {
     if (this.data) {
       this.post = this.data;
+      console.log("🚀 ~ file: comment-dialog.component.ts:53 ~ CommentDialogComponent ~ ngOnInit ~ this.post:", this.post)
       this.commentList = this.post.comments;
+      console.log("🚀 ~ file: comment-dialog.component.ts:55 ~ CommentDialogComponent ~ ngOnInit ~ this.commentList:", this.commentList)
 
       for (let comment of this.commentList) {
         let commentGroup!: any;

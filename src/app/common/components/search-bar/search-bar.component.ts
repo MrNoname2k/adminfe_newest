@@ -3,16 +3,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShareDialogComponent } from '../share-dialog/share-dialog.component';
 import { Post, User } from 'src/app/pages/models/home-response';
 import { clone } from 'lodash';
+import { NavigatePageService } from 'src/app/core/service/navigate-page/navigate-page.service';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnChanges{
+export class SearchBarComponent implements OnChanges {
   @Input() public userInfo!: User;
 
   @Output() public openDialgEvent = new EventEmitter<string>();
+
+  constructor(
+    public navigateService: NavigatePageService
+  ) { }
 
   public avatar!: Post;
 

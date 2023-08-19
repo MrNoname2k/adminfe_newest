@@ -1,4 +1,4 @@
-       import { ObserversModule } from '@angular/cdk/observers';
+import { ObserversModule } from '@angular/cdk/observers';
 import {
   Component,
   OnInit,
@@ -37,7 +37,7 @@ export class PostCardComponent implements OnInit, OnChanges {
     public navigateService: NavigatePageService,
     private router: ActivatedRoute,
     private postService: PostService,
-  ) {}
+  ) { }
 
   public ngOnChanges(changes: SimpleChanges) {
     if (changes['postList'] && changes['postList'].currentValue) {
@@ -59,12 +59,13 @@ export class PostCardComponent implements OnInit, OnChanges {
       height: '90%',
       data: post,
       disableClose: true,
-      position: {top: '3%'}
+      position: { top: '3%' }
     });
 
     this.dialog.afterAllClosed.subscribe(() => {
       this.postService.getPostOfFriends(this.userId).subscribe({
         next: (res) => {
+          console.log("🚀 ~ file: post-card.component.ts:68 ~ PostCardComponent ~ this.postService.getPostOfFriends ~ res:", res)
           this.postList = res.data.results;
         }
       })

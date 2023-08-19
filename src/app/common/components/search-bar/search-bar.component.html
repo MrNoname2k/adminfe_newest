@@ -2,7 +2,7 @@
   <div class="share-box-inner">
     <!-- profile picture end -->
     <div class="profile-thumb">
-      <a href="#">
+      <a (click)="navigateService.navigateToPage('/profile', userInfo.id)">
         <figure class="profile-thumb-middle" *ngFor="let url of avatar | postImagePipe | async">
           <img [src]="url" alt="profile picture">
         </figure>

@@ -400,13 +400,40 @@
   }
 }
 
-.profile-thumb.active.profile-active::before {
-  bottom: 2px;
-  right: -2px;
-  width: 10px;
-  height: 10px;
-  content: "";
-  border-radius: 50%;
-  position: absolute;
-  background-color: #09ae82;
+// .profile-thumb.active.profile-active::before {
+//   bottom: 2px;
+//   right: -2px;
+//   width: 10px;
+//   height: 10px;
+//   content: "";
+//   border-radius: 50%;
+//   position: absolute;
+// }
+
+// .profile-thumb.active.profile-active.online::before {
+//   background-color: #09ae82;
+// }
+
+// .profile-thumb.active.profile-active.offline::before {
+//   background-color: #9b0404;
+// }
+
+.profile-thumb {
+  &.active.profile-active::before {
+    bottom: 2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  &.active.profile-active.online::before {
+    background-color: #09ae82;
+  }
+
+  &.active.profile-active.offline::before {
+    background-color: #9b0404;
+  }
 }
