@@ -80,7 +80,7 @@
   <div class="mobile-header-wrapper">
     <div class="mobile-header">
       <div class="mobile-logo">
-        <a href="#">
+        <a (click)="getHomePage()">
           <img src="assets/images/logo/logo-white.png" alt="logo">
         </a>
       </div>
@@ -270,9 +270,41 @@
         </div>
       </div>
       <div class="mobile-user-info">
-        <figure class="user-info-image__wrap">
-          <img src="../../../../assets/images/photos/photo-9.jpg" alt="">
-        </figure>
+
+        <button [matMenuTriggerFor]="menu4">
+          <ng-container *ngIf="!avatar">
+            <figure class="user-info-image__wrap">
+              <img src="../../../../assets/images/profile/profile-small-1.jpg" alt="profile picture">
+            </figure>
+          </ng-container>
+          <ng-container *ngFor="let url of avatar | postImagePipe | async">
+            <figure class="user-info-image__wrap">
+              <img [src]="url" alt="profile picture">
+            </figure>
+          </ng-container>
+        </button>
+
+        <mat-menu #menu4="matMenu">
+          <div class="profile-dropdown">
+            <div class="profile-head">
+              <h5 class="name"><a [routerLink]="['/profile']">{{userInfo?.firstName + ' ' +
+                  userInfo?.lastName}}</a></h5>
+              <a class="mail" [routerLink]="['/profile']">{{userInfo?.mail}}</a>
+            </div>
+            <div class="profile-body">
+              <ul>
+                <li><a [routerLink]="['/profile']"><i class="flaticon-user"></i>Profile</a></li>
+                <li><a href="#"><i class="flaticon-message"></i>Inbox</a></li>
+                <li><a href="#"><i class="flaticon-document"></i>Activity</a></li>
+              </ul>
+              <ul>
+                <li><a href="#"><i class="flaticon-settings"></i>Setting</a></li>
+                <li><a (click)="doLogout()"><i class="flaticon-unlock"></i>Log out</a></li>
+              </ul>
+            </div>
+          </div>
+        </mat-menu>
+
       </div>
     </div>
   </div>

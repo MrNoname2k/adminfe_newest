@@ -14,7 +14,7 @@
               </div>
               <div class="friend-search-list" [ngClass]="isShowSearchFriend ? 'show' : ''">
                 <div class="frnd-search-title">
-                  <button class="frnd-search-icon"><i class="flaticon-settings"></i></button>
+                  <!-- <button class="frnd-search-icon"><i class="flaticon-settings"></i></button> -->
                   <p>search friends</p>
                   <button class="close-btn" (click)="isShowSearchFriend = false"><i
                       class="flaticon-cross-out"></i></button>
@@ -24,7 +24,8 @@
                     <ng-container *ngFor="let item of friends">
                       <li class="d-flex align-items-center profile-active">
                         <!-- profile picture end -->
-                        <div class="profile-thumb active" (click)="showChart(item.id!)">
+                        <div class="profile-thumb active profile-active"
+                          [ngClass]="{'online': item.online, 'offline': !item.online}" (click)="showChart(item.id!)">
                           <a (click)="showChart(item.id!)">
                             <figure class="profile-thumb-small" *ngIf="item.avatars?.length">
                               <ng-container *ngFor="let avatar of item.avatars">
@@ -35,7 +36,7 @@
                             </figure>
 
                             <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                              <img src="assets/images/profile/profile-small-10.jpg" alt="">
                             </figure>
                           </a>
                         </div>
@@ -57,7 +58,8 @@
                   <ngx-slick-carousel class="carousel" [config]="slideConfig" #slickModal="slick-carousel">
                     <div ngxSlickItem *ngFor="let item of friends">
                       <div class="single-slide" (click)="showChart(item.id!)">
-                        <div class="profile-thumb active profile-active">
+                        <div class="profile-thumb active profile-active"
+                          [ngClass]="{'online': item.online, 'offline': !item.online}">
                           <a>
                             <figure class="profile-thumb-small" *ngIf="item.avatars?.length">
                               <ng-container *ngFor="let avatar of item.avatars">
@@ -68,7 +70,7 @@
                             </figure>
 
                             <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                              <img src="assets/images/profile/profile-small-10.jpg" alt="">
                             </figure>
                           </a>
                         </div>
@@ -91,12 +93,15 @@
                 <div class="chat-output-box" [ngClass]="isShowChat ? 'show' : ''">
                   <div class="live-chat-title">
                     <div class="profile-thumb active">
-                      <a href="#">
+                      <a (click)="navigateService.navigateToPage('/profile', messagesViewAll?.toUserId)">
                         <ng-container *ngFor="let post of messagesViewAll?.avatar">
                           <figure class="profile-thumb-small" *ngFor="let url of post  | postImagePipe | async">
-                            <img [src]="url ? url : 'assets/images/photos/no_avatar.jpg'" alt="profile picture">
+                            <img [src]="url ? url : 'assets/images/profile/profile-small-10.jpg'" alt="profile picture">
                           </figure>
                         </ng-container>
+                        <figure class="profile-thumb-small" *ngIf="messagesViewAll?.avatar?.length == 0">
+                          <img src="assets/images/profile/profile-small-10.jpg" alt="">
+                        </figure>
                       </a>
                     </div>
 
@@ -106,7 +111,7 @@
                       <span class="active-pro">{{messagesViewAll?.login ? 'Active Now' : 'offline'}}</span>
                     </div>
                     <div class="live-chat-settings ml-auto">
-                      <button class="chat-settings"><i class="flaticon-settings"></i></button>
+                      <!-- <button class="chat-settings"><i class="flaticon-settings"></i></button> -->
                       <button class="close-btn" (click)="isShowChat = false"><i class="flaticon-cross-out"></i></button>
                     </div>
                   </div>
@@ -168,7 +173,7 @@
                             </figure>
 
                             <figure class="profile-thumb-small" *ngIf="!item.avatars?.length">
-                              <img src="assets/images/profile/profile-small-15.jpg" alt="">
+                              <img src="assets/images/profile/profile-small-10.jpg" alt="">
                             </figure>
                           </a>
                         </div>

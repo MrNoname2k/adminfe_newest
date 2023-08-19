@@ -60,7 +60,7 @@ export class FooterComponent implements OnInit, OnChanges, AfterViewChecked {
     private dataService: SendDataService,
     private messageService: MessageService,
     public navigateService: NavigatePageService
-  ) {}
+  ) { }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -163,6 +163,7 @@ export class FooterComponent implements OnInit, OnChanges, AfterViewChecked {
         if (res.meta.code === '200') {
           if (res.data) {
             this.messagesViewAll = res.data;
+            console.log("🚀 ~ file: footer.component.ts:166 ~ FooterComponent ~ this.socketService.getAllSendMessages ~ this.messagesViewAll:", this.messagesViewAll)
           }
         }
       });
@@ -187,12 +188,12 @@ export class FooterComponent implements OnInit, OnChanges, AfterViewChecked {
   }
 
   searchFriend(key: string) {
-    if(key == null){
+    if (key == null) {
       this.friends = this.friendsSearch;
-    }else{
-      const find : User[] = [];
-      this.friendsSearch.forEach((e) =>{
-        if(e.firstName.includes(key) || e.lastName.includes(key)){
+    } else {
+      const find: User[] = [];
+      this.friendsSearch.forEach((e) => {
+        if (e.firstName.includes(key) || e.lastName.includes(key)) {
           find.push(e);
         }
       })

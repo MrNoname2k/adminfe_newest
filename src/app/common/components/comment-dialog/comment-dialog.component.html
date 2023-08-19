@@ -20,7 +20,8 @@
             <ng-container *ngFor="let ava of post.idUserCreate.avatars">
               <ng-container *ngFor="let url of ava | postImagePipe | async">
                 <figure class="profile-thumb-middle">
-                  <img [src]="url" alt="profile picture">
+                  <img [src]="url ? url : '../../../../assets/images/profile/profile-small-10.jpg'"
+                    alt="profile picture">
                 </figure>
               </ng-container>
             </ng-container>
@@ -35,7 +36,7 @@
             + ''))}}</span>
         </div>
       </div>
-      <div class="content-top-edit">
+      <!-- <div class="content-top-edit">
         <div _ngcontent-vym-c115="" class="post-settings-bar"><span _ngcontent-vym-c115=""></span><span
             _ngcontent-vym-c115=""></span><span _ngcontent-vym-c115=""></span>
           <div _ngcontent-vym-c115="" class="post-settings arrow-shape">
@@ -46,7 +47,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="content-center">
       <span class="content-text">
@@ -72,8 +73,8 @@
         <div class="comment-and-share">
           <button _ngcontent-uwx-c115="" class="post-comment"><i _ngcontent-uwx-c115=""
               class="bi bi-chat-bubble"></i><span _ngcontent-uwx-c115="">{{commentList.length}}</span></button>
-          <button _ngcontent-htc-c115="" class="post-share"><i _ngcontent-htc-c115="" class="bi bi-share"></i><span
-              _ngcontent-htc-c115="">07</span></button>
+          <!-- <button _ngcontent-htc-c115="" class="post-share"><i _ngcontent-htc-c115="" class="bi bi-share"></i><span
+              _ngcontent-htc-c115="">07</span></button> -->
         </div>
       </div>
     </div>
@@ -81,7 +82,7 @@
       <div class="comment-bean" *ngFor="let comment of commentTransport.slice(0, numberOfComments); let i = index">
 
         <div class="bean-img">
-          <img src="assets/images/profile/profile-small-1.jpg" alt="">
+          <img src="../../../../assets/images/profile/profile-small-10.jpg" alt="">
         </div>
         <span class="bean-content">
           <div class="bean-options">
